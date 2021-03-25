@@ -32,9 +32,14 @@ public class Main {
                 userArrayList.add(user);
             }
             Collections.sort(userArrayList);
-            System.out.println("============после сортировки=============");
+            System.out.println("============Переопределение compareTO=============");
             for (User userSort : userArrayList) {
                 System.out.println(userSort.toString());
+            }
+            userArrayList.sort(Comparator.nullsFirst(Comparator.comparing(User::getAge, Comparator.nullsFirst(Comparator.reverseOrder()))));
+            System.out.println("===============Сортировка компаратором==================");
+            for (User userSecond : userArrayList){
+                System.out.println(userSecond.toString());
             }
         } catch (IOException e) {
             e.printStackTrace();
